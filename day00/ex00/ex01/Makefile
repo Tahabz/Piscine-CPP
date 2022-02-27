@@ -1,8 +1,10 @@
 FLAGS = -Wall -Wextra -Werror -std=c++98
 DFLAGS = -fsanitize=address -g
-NAME = megaphone
+NAME = phonebook
 INCLUDE = ../../
-SRCS = megaphone.cpp \
+SRCS = PhoneBook.cpp \
+		Contact.cpp \
+		main.cpp \
 		$(INCLUDE)/myString.cpp
 
 all: $(NAME)
