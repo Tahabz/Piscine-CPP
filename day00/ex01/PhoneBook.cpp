@@ -20,12 +20,24 @@ void PhoneBook::addContact(Contact contact)
 	}
 	else
 	{
-		contactsCount += 1;
 		PhoneBook::contacts[contactsCount] = contact;
+		contactsCount += 1;
 	}
 }
 
 Contact PhoneBook::getContact(int i)
 {
 	return PhoneBook::contacts[i];
+}
+
+void PhoneBook::printContacts()
+{
+	for (int i = 0; i < PhoneBook::contactsCount; i++)
+	{
+		std::cout << PhoneBook::contacts[i].firstName << std::endl;
+		std::cout << PhoneBook::contacts[i].lastName << std::endl;
+		std::cout << PhoneBook::contacts[i].nickName << std::endl;
+		std::cout << PhoneBook::contacts[i].phoneNumber << std::endl;
+		std::cout << PhoneBook::contacts[i].darkestSecret << std::endl;
+	}
 }

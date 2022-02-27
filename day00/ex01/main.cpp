@@ -7,10 +7,15 @@ bool isCmd(std::string cmd)
 
 int main(void)
 {
-	std::string cmd;
+	PhoneBook book;
 
-	std::cout << "Enter one of the three commands: ADD, SEARCH, EXIT: ";
-
-	while (!isCmd(cmd))
-		std::cin >> cmd;
+	Contact contact("taha", "baz", "mohamed", "0600543549", "NONE");
+	book.addContact(contact);
+	book.printContacts();
+	// std::string cmd;
+	// while (!isCmd(cmd))
+	// {
+	// 	std::cout << "Enter one of the three commands: ADD, SEARCH, EXIT: ";
+	// 	std::cin >> cmd;
+	// }
 }

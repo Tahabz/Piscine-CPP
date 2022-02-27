@@ -15,6 +15,7 @@ public:
 	PhoneBook();
 	void addContact(Contact contact);
 	Contact getContact(int i);
+	void printContacts();
 	void exit();
 };
 
