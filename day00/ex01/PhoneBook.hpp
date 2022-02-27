@@ -1,19 +1,20 @@
-#if !defined(PHONEBOOK__CPP)
-#define PHONEBOOK__CPP
+#if !defined(PHONEBOOK__HPP)
+#define PHONEBOOK__HPP
 
 #include "Contact.hpp"
 
 class PhoneBook
 {
 private:
-	Contact _contacts[];
+	static Contact contacts[8];
 	static int contactsCount;
+	static int oldestContact;
 	void displayContacts() const;
 
 public:
 	PhoneBook();
-	void add(Contact contact);
-	void search(int i);
+	void addContact(Contact contact);
+	Contact getContact(int i);
 	void exit();
 };
 

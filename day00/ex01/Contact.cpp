@@ -11,3 +11,5 @@ Contact::Contact(std::string firstName, std::string lastName, std::string nickNa
 	this->_darkestSecret = darkestSecret;
 	return;
 }
+
+Contact::Contact() { return; };
