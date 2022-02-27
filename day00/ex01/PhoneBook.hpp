@@ -16,6 +16,7 @@ public:
 	void addContact(Contact contact);
 	Contact getContact(int i);
 	void printContacts();
+	void printContact(int i);
 	void exit();
 };
 

@@ -5,35 +5,49 @@ bool isCmd(std::string cmd)
 	return (cmd == "ADD" || cmd == "SEARCH" || cmd == "EXIT");
 }
 
+Contact buildContact()
+{
+	std::string firstName;
+	std::string lastName;
+	std::string nickName;
+	std::string darkestSecret;
+	std::string phone;
+
+	std::cout << "first name: ";
+	std::cin >> firstName;
+	std::cout << "last name: ";
+	std::cin >> lastName;
+	std::cout << "nickname: ";
+	std::cin >> nickName;
+	std::cout << "darkest secret: ";
+	std::cin >> darkestSecret;
+	std::cout << "phone number: ";
+	std::cin >> phone;
+	std::cout << std::endl;
+	Contact contact(firstName, lastName, nickName, phone, darkestSecret);
+	return contact;
+}
+
 int main(void)
 {
+	std::string cmd;
 	PhoneBook book;
 
-	Contact contact0("0", "baz", "mohamed", "0600543549", "NONE");
-	Contact contact1("1", "broe", "jfcjdn", "0600543fee", "fewkwe");
-	Contact contact2("2", "kcs", "kcjskc", "06eeeeee", "dcksdkcsc");
-	Contact contact3("3", "baz", "mohamed", "0600543549", "NONE");
-	Contact contact4("4", "baz", "mohamed", "0600543549", "NONE");
-	Contact contact5("5", "baz", "mohamed", "0600543549", "NONE");
-	Contact contact6("6", "baz", "mohamed", "0600543549", "NONE");
-	Contact contact7("7", "baz", "mohamed", "0600543549", "NONE");
-	Contact contact8("8", "baz", "mohamed", "0600543549", "NONE");
-	Contact contact9("9", "baz", "mohamed", "0600543549", "NONE");
-	book.addContact(contact0);
-	book.addContact(contact1);
-	book.addContact(contact2);
-	book.addContact(contact3);
-	book.addContact(contact4);
-	book.addContact(contact5);
-	book.addContact(contact6);
-	book.addContact(contact7);
-	book.addContact(contact8);
-	book.addContact(contact9);
-	book.printContacts();
-	// std::string cmd;
-	// while (!isCmd(cmd))
-	// {
-	// 	std::cout << "Enter one of the three commands: ADD, SEARCH, EXIT: ";
-	// 	std::cin >> cmd;
-	// }
+	while (cmd != "EXIT")
+	{
+		while (!isCmd(cmd))
+		{
+			std::cout << "Enter one of the three commands: ADD, SEARCH, EXIT: ";
+			std::cin >> cmd;
+		}
+		if (cmd == "ADD")
+			book.addContact(buildContact());
+		else if (cmd == "SEARCH")
+		{
+			int i;
+			std::cin >> i;
+			book.printContact(i);
+		}
+	}
+	return (0);
 }

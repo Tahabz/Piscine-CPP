@@ -38,3 +38,13 @@ void PhoneBook::printContacts()
 		std::cout << "---------------------------------------------------" << std::endl;
 	}
 }
+
+void PhoneBook::printContact(int i)
+{
+	std::cout << this->_contacts[i].firstName << std::endl;
+	std::cout << this->_contacts[i].lastName << std::endl;
+	std::cout << this->_contacts[i].nickName << std::endl;
+	std::cout << this->_contacts[i].phoneNumber << std::endl;
+	std::cout << this->_contacts[i].darkestSecret << std::endl;
+	std::cout << "---------------------------------------------------" << std::endl;
+}
