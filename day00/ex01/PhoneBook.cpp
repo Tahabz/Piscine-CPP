@@ -1,43 +1,40 @@
 #include "PhoneBook.hpp"
 
-int PhoneBook::contactsCount = 0;
-int PhoneBook::oldestContact = 0;
-Contact PhoneBook::contacts[8];
-
-PhoneBook::PhoneBook(void)
+PhoneBook::PhoneBook(void) : _contacts(), _contactsCount(0), _oldestContact(0)
 {
 	return;
 }
 
 void PhoneBook::addContact(Contact contact)
 {
-	if (contactsCount == 7)
+	if (this->_contactsCount == 8)
 	{
-		if (oldestContact > contactsCount)
-			oldestContact = 0;
-		PhoneBook::contacts[oldestContact] = contact;
-		oldestContact += 1;
+		if (this->_oldestContact > this->_contactsCount)
+			this->_oldestContact = 0;
+		this->_contacts[this->_oldestContact] = contact;
+		this->_oldestContact += 1;
 	}
 	else
 	{
-		PhoneBook::contacts[contactsCount] = contact;
-		contactsCount += 1;
+		this->_contacts[this->_contactsCount] = contact;
+		this->_contactsCount += 1;
 	}
 }
 
 Contact PhoneBook::getContact(int i)
 {
-	return PhoneBook::contacts[i];
+	return this->_contacts[i];
 }
 
 void PhoneBook::printContacts()
 {
-	for (int i = 0; i < PhoneBook::contactsCount; i++)
+	for (int i = 0; i < this->_contactsCount; i++)
 	{
-		std::cout << PhoneBook::contacts[i].firstName << std::endl;
-		std::cout << PhoneBook::contacts[i].lastName << std::endl;
-		std::cout << PhoneBook::contacts[i].nickName << std::endl;
-		std::cout << PhoneBook::contacts[i].phoneNumber << std::endl;
-		std::cout << PhoneBook::contacts[i].darkestSecret << std::endl;
+		std::cout << this->_contacts[i].firstName << std::endl;
+		std::cout << this->_contacts[i].lastName << std::endl;
+		std::cout << this->_contacts[i].nickName << std::endl;
+		std::cout << this->_contacts[i].phoneNumber << std::endl;
+		std::cout << this->_contacts[i].darkestSecret << std::endl;
+		std::cout << "---------------------------------------------------" << std::endl;
 	}
 }

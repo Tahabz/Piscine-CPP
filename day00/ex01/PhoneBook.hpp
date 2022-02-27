@@ -6,9 +6,9 @@
 class PhoneBook
 {
 private:
-	static Contact contacts[8];
-	static int contactsCount;
-	static int oldestContact;
+	Contact _contacts[8];
+	int _contactsCount;
+	int _oldestContact;
 	void displayContacts() const;
 
 public:
