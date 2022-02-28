@@ -28,23 +28,28 @@ Contact PhoneBook::getContact(int i)
 
 void PhoneBook::printContacts()
 {
-	for (int i = 0; i < this->_contactsCount; i++)
+	for (unsigned int i = 0; i < this->_contactsCount; ++i)
 	{
-		std::cout << this->_contacts[i].firstName << std::endl;
-		std::cout << this->_contacts[i].lastName << std::endl;
-		std::cout << this->_contacts[i].nickName << std::endl;
-		std::cout << this->_contacts[i].phoneNumber << std::endl;
-		std::cout << this->_contacts[i].darkestSecret << std::endl;
-		std::cout << "---------------------------------------------------" << std::endl;
+		const Contact contact = this->_contacts[i];
+		this->_print_cell(std::to_string(i));
+		std::cout << '|';
+		this->_print_cell(contact.getFirstName());
+		std::cout << '|';
+		this->_print_cell(contact.getLastName());
+		std::cout << '|';
+		this->_print_cell(contact.getNickName());
+		std::cout << std::endl;
 	}
 }
 
-void PhoneBook::printContact(int i)
+void PhoneBook::_print_cell(std::string str) const
 {
-	std::cout << this->_contacts[i].firstName << std::endl;
-	std::cout << this->_contacts[i].lastName << std::endl;
-	std::cout << this->_contacts[i].nickName << std::endl;
-	std::cout << this->_contacts[i].phoneNumber << std::endl;
-	std::cout << this->_contacts[i].darkestSecret << std::endl;
-	std::cout << "---------------------------------------------------" << std::endl;
+	std::cout << std::setw(10);
+	std::cout << std::right;
+	std::cout << str;
+}
+
+bool PhoneBook::includes(unsigned int i)
+{
+	return (i < this->_contactsCount && i >= 0);
 }

@@ -33,21 +33,39 @@ int main(void)
 	std::string cmd;
 	PhoneBook book;
 
-	while (cmd != "EXIT")
+	while (true)
 	{
-		while (!isCmd(cmd))
-		{
-			std::cout << "Enter one of the three commands: ADD, SEARCH, EXIT: ";
-			std::cin >> cmd;
-		}
+		std::cout << "Enter one of the three commands: ADD, SEARCH, EXIT: ";
+		std::cin >> cmd;
 		if (cmd == "ADD")
+		{
 			book.addContact(buildContact());
+			std::cout << "Contact saved successfully!" << std::endl;
+			cmd = "";
+		}
 		else if (cmd == "SEARCH")
 		{
-			int i;
-			std::cin >> i;
-			book.printContact(i);
+			while (true)
+			{
+				unsigned int i;
+				book.printContacts();
+				std::cout << "Contact's index: ";
+				std::cin >> i;
+				std::cin.clear();
+				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+				if (!book.includes(i))
+					std::cout << "Please enter a valid index!" << std::endl;
+				else
+				{
+					book.getContact(i).printContact();
+					break;
+				}
+			}
 		}
+		else if (cmd == "EXIT")
+			return 0;
+		else
+			std::cout << "Please enter a valid command!" << std::endl;
 	}
 	return (0);
 }
