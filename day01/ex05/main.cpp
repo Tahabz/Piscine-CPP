@@ -13,4 +13,5 @@ int main(void)
 	kar.complain(s2);
 	kar.complain(s3);
 	kar.complain(s4);
+	kar.complain(s5);
 }

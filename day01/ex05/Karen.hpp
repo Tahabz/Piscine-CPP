@@ -10,7 +10,9 @@ private:
 	void info(void);
 	void warning(void);
 	void error(void);
-	void (Karen::*_fns[6])(void);
+	void (Karen::*_fns[51])(void);
+	bool _isLevel(size_t id) const;
+	size_t _hash(std::string s) const;
 
 public:
 	Karen(void);
