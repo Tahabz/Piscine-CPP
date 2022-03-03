@@ -14,21 +14,21 @@ int main(int ac, char *av[])
 	std::string s2 = av[3];
 
 	std::ifstream ifs(filename);
-	if (!ifs.is_open())
+	if (!ifs)
 	{
 		std::cerr << "Error while opening the file" << std::endl;
 		return 1;
 	}
 	std::ofstream ofs(filename + ".replace");
-	if (!ofs.is_open())
+	if (!ofs)
 	{
 		std::cerr << "Error while opening the file" << std::endl;
 		return 1;
 	}
 
-	if (s1.empty() || s2.empty())
+	if (s1.empty())
 	{
-		std::cerr << "Empty Arg" << std::endl;
+		std::cerr << "First arg can not be empty!" << std::endl;
 		return 1;
 	}
 
@@ -37,7 +37,7 @@ int main(int ac, char *av[])
 		std::getline(ifs, str);
 		while (true)
 		{
-			size_t index = str.find(av[2]);
+			size_t index = str.find(s1);
 			if (index == std::string::npos)
 				break;
 			str = str.insert(index, s2).erase(index + s2.length(), s1.length());
