@@ -2,11 +2,18 @@
 
 Karen::Karen(void)
 {
-	this->_fns[44] = &Karen::error;
-	this->_fns[50] = &Karen::warning;
-	this->_fns[24] = &Karen::info;
-	this->_fns[39] = &Karen::debug;
+	this->_fns[0] = &Karen::none;
+	this->_fns[1] = &Karen::debug;
+	this->_fns[2] = &Karen::info;
+	this->_fns[3] = &Karen::warning;
+	this->_fns[4] = &Karen::error;
+
 	return;
+}
+
+void Karen::none(void)
+{
+	std::cout << "Invalid level!" << std::endl;
 }
 
 void Karen::debug(void)
@@ -29,34 +36,13 @@ void Karen::error(void)
 	std::cout << "This is unacceptable! I want to speak to the manager now." << std::endl;
 }
 
-bool Karen::_isLevel(size_t id) const
+int Karen::getLevel(std::string level) const
 {
-	return id == 1 || id == 4 || id == 5 || id == 2;
-}
-
-size_t Karen::_hash(std::string s) const
-{
-	size_t h = 0;
-	for (size_t i = 0; i < s.length(); i++)
-	{
-		h = 31 * h + s[i];
-	}
-	return h % 100;
+	return (level == "DEBUG") * 1 + (level == "INFO") * 2 + (level == "WARNING") * 3 + (level == "ERROR") * 4;
 }
 
 void Karen::complain(std::string str)
 {
-	size_t id = this->_hash(str);
-	switch (id)
-	{
-	case 39:
-	case 50:
-	case 24:
-	case 44:
-		(this->*_fns[id])();
-		break;
-	default:
-		std::cout << "Invalid level!" << std::endl;
-		break;
-	}
+	int level = getLevel(str);
+	(this->*_fns[level])();
 }
