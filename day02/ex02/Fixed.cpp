@@ -170,7 +170,6 @@ Fixed Fixed::operator/(const Fixed &fx) const
 std::ostream &
 operator<<(std::ostream &o, Fixed const &num)
 {
-	o
-		<< num.toFloat();
+	o << num.toFloat();
 	return o;
 }
