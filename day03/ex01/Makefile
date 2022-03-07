@@ -1,6 +1,6 @@
 FLAGS = -Wall -Wextra -Werror -std=c++98
 DFLAGS = -fsanitize=address -g
-NAME = claptrap
+NAME = scavtrap
 SRCS = 	main.cpp ClapTrap.cpp ScavTrap.cpp
 
 all: $(NAME)
