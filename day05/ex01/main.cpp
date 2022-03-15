@@ -4,14 +4,16 @@ int main(void)
 {
 	try
 	{
-		// Bureaucrat Bureaucrat1("Taha", 149);
-		Bureaucrat Bureaucrat2("Taha", 2);
-		// Bureaucrat Bureaucrat3("Taha", 160);
-		// Bureaucrat1.decrementGrade();
-		// Bureaucrat1.decrementGrade();
-		Bureaucrat2.incrementGrade();
-		// Bureaucrat2.incrementGrade();
-		std::cout << Bureaucrat2 << std::endl;
+		Bureaucrat taha("taha", 120);
+
+		std::cout << taha << std::endl;
+
+		Form agreement("Agreement", 110, 1);
+
+		taha.signForm(agreement);
+
+		std::cout << agreement << std::endl;
+		return 0;
 	}
 	catch (std::exception &e)
 	{
