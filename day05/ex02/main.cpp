@@ -1,18 +1,31 @@
 #include "Bureaucrat.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include <iostream>
+#include <string>
 
-int main(void) {
-  try {
-    Bureaucrat taha("taha", 120);
+int main() {
+  Bureaucrat bob("Bob", 46);
+  std::cout << bob << std::endl;
 
-    std::cout << taha << std::endl;
+  ShrubberyCreationForm shrubbery("Garden");
+  std::cout << shrubbery << std::endl;
 
-    Form agreement("Agreement", 110, 1);
+  RobotomyRequestForm robotomy("Student");
+  std::cout << robotomy << std::endl;
 
-    taha.signForm(agreement);
+  PresidentialPardonForm presidential("Traitor");
+  std::cout << presidential << std::endl;
 
-    std::cout << agreement << std::endl;
-    return 0;
-  } catch (std::exception &e) {
-    std::cout << e.what();
-  }
+  bob.signForm(shrubbery);
+  bob.executeForm(shrubbery);
+
+  bob.signForm(robotomy);
+  bob.executeForm(robotomy);
+
+  bob.signForm(presidential);
+  bob.executeForm(presidential);
+
+  return 0;
 }

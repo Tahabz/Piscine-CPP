@@ -58,12 +58,23 @@ std::ostream &operator<<(std::ostream &o, Bureaucrat &bc) {
   return o;
 }
 
-void Bureaucrat::signForm(Form &form) const {
+void Bureaucrat::signForm(AForm &form) const {
   try {
     form.beSigned(*this);
     std::cout << this->getName() << " signed " << form.getName() << std::endl;
-  } catch (Form::GradeTooLowException &e) {
+  } catch (AForm::GradeTooLowException &e) {
     std::cout << this->getName() << " could not sign the form because "
               << e.what() << std::endl;
   }
+}
+
+void Bureaucrat::executeForm(const AForm &form) const {
+  try {
+    form.execute(*this);
+  } catch (std::exception &e) {
+    std::cout << this->_name << " couldn't execute " << form.getName()
+              << " because " << e.what() << std::endl;
+    return;
+  }
+  std::cout << this->_name << " executed " << form.getName() << std::endl;
 }

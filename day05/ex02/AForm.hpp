@@ -1,24 +1,25 @@
-#if !defined(FORM_HPP)
-#define FORM_HPP
+#if !defined(AFORM_HPP)
+#define AFORM_HPP
+#include "Bureaucrat.hpp"
 #include <iostream>
 
 class Bureaucrat;
-class Form {
+class AForm {
 public:
-  Form(void);
-  Form(const std::string &name, int gradeToSign,
-       int gradeToExecute) throw(Form::GradeTooHighException,
-                                 Form::GradeTooLowException);
-  Form(const Form &src);
-  Form &operator=(const Form &src);
-  virtual ~Form();
+  AForm(void);
+  AForm(const std::string &name, int gradeToSign,
+        int gradeToExecute) throw(AForm::GradeTooHighException,
+                                  AForm::GradeTooLowException);
+  AForm(const AForm &src);
+  AForm &operator=(const AForm &src);
+  virtual ~AForm();
   std::string getName() const;
   bool isSigned(void) const;
   int getGradeToSign(void) const;
   int getGradeToExecute(void) const;
-  void beSigned(const Bureaucrat &br) throw(Form::GradeTooLowException);
+  void beSigned(const Bureaucrat &br) throw(AForm::GradeTooLowException);
   virtual void execute(Bureaucrat const &executor) const
-      throw(Form::GradeTooLowException, Form::NotSignedException) = 0;
+      throw(AForm::GradeTooLowException, AForm::NotSignedException) = 0;
 
   class GradeTooLowException : public std::exception {
   public:
@@ -46,6 +47,6 @@ protected:
       throw(GradeTooLowException, NotSignedException);
 };
 
-std::ostream &operator<<(std::ostream &o, Form &fr);
+std::ostream &operator<<(std::ostream &o, AForm &fr);
 
 #endif // BUREAUCRAP_HPP

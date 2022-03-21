@@ -1,9 +1,9 @@
 #if !defined(PRESEDENTIALPARDONFORM_HPP)
 #define PRESEDENTIALPARDONFORM_HPP
 
-#include "Form.hpp"
+#include "AForm.hpp"
 
-class PresidentialPardonForm : public Form {
+class PresidentialPardonForm : public AForm {
 public:
   PresidentialPardonForm(void);
   PresidentialPardonForm(const std::string &target);
@@ -11,7 +11,7 @@ public:
   PresidentialPardonForm &operator=(const PresidentialPardonForm &src);
   virtual ~PresidentialPardonForm();
   void execute(Bureaucrat const &executor) const
-      throw(Form::GradeTooLowException, Form::NotSignedException);
+      throw(AForm::GradeTooLowException, AForm::NotSignedException);
 
 private:
   std::string _target;

@@ -1,9 +1,9 @@
 #if !defined(BUREAUCRAT_HPP)
 #define BUREAUCRAT_HPP
 
-#include "Form.hpp"
+#include "AForm.hpp"
 #include <iostream>
-class Form;
+class AForm;
 class Bureaucrat {
 public:
   Bureaucrat(void);
@@ -17,7 +17,8 @@ public:
   int getGrade() const;
   void incrementGrade() throw(Bureaucrat::GradeTooHighException);
   void decrementGrade() throw(Bureaucrat::GradeTooLowException);
-  void signForm(Form &form) const;
+  void signForm(AForm &form) const;
+  void executeForm(const AForm &form) const;
 
   class GradeTooHighException : public std::exception {
   public:

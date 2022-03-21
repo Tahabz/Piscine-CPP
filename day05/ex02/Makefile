@@ -1,7 +1,7 @@
 FLAGS = -Wall -Wextra -Werror -std=c++98
 DFLAGS = -fsanitize=address -g
 NAME = bureaucrat
-SRCS = 	main.cpp bureaucrat.cpp form.cpp
+SRCS = 	main.cpp Bureaucrat.cpp AForm.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp
 
 all: $(NAME)
 
