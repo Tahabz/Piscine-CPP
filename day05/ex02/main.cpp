@@ -1,22 +1,18 @@
 #include "Bureaucrat.hpp"
 
-int main(void)
-{
-	try
-	{
-		Bureaucrat taha("taha", 120);
+int main(void) {
+  try {
+    Bureaucrat taha("taha", 120);
 
-		std::cout << taha << std::endl;
+    std::cout << taha << std::endl;
 
-		Form agreement("Agreement", 110, 1);
+    Form agreement("Agreement", 110, 1);
 
-		taha.signForm(agreement);
+    taha.signForm(agreement);
 
-		std::cout << agreement << std::endl;
-		return 0;
-	}
-	catch (std::exception &e)
-	{
-		std::cout << e.what();
-	}
+    std::cout << agreement << std::endl;
+    return 0;
+  } catch (std::exception &e) {
+    std::cout << e.what();
+  }
 }
