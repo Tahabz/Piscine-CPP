@@ -19,9 +19,9 @@ AForm::~AForm(void) {
   return;
 };
 AForm::AForm(void)
-    : _name("name"), _gradeToSign(0), _gradeToExecute(0), _isSigned(false){
+    : _name("name"), _gradeToSign(150), _gradeToExecute(150), _isSigned(false){
 
-                                                          };
+                                                              };
 
 AForm::AForm(AForm const &src)
     : _name(src._name), _gradeToSign(src._gradeToSign),
